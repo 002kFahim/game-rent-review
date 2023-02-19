@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar1 from "../components/Navbar1";
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Card1 from "../components/Card1";
 import Card2 from "../components/Card2";
 import Card3 from "../components/Card3";
