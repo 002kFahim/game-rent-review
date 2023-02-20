@@ -3,11 +3,6 @@ import Carousel from "react-bootstrap/Carousel";
 import Navbar1 from "../components/Navbar1";
 import { Container, Row, Col } from "react-bootstrap";
 import Card1 from "../components/Card1";
-import Card2 from "../components/Card2";
-import Card3 from "../components/Card3";
-import Card4 from "../components/Card4";
-import Card5 from "../components/Card5";
-import Card6 from "../components/Card6";
 import pic1 from "../pictures/hogleg.jpg";
 import pic2 from "../pictures/elden Ring.jpg";
 import pic3 from "../pictures/dead space.jpg";
@@ -122,11 +117,11 @@ const Home = () => {
       </div>
 
       <Container className="d-flex justify-content-center mt-5">
-        <Row style={{paddingBottom: '8px',display:"flex",alignItems:"center"}}>
-          <Col className="mt-5" xs={12} md={4}>
-            <Card2 />
-          </Col>
-          {/* <Col className="mt-5" xs={12} md={4}>
+        {/* <Row style={{paddingBottom: '8px',display:"flex",alignItems:"center"}}> */}
+        <Col className="mt-5" xs={12}>
+          <Card1 />
+        </Col>
+        {/* <Col className="mt-5" xs={12} md={4}>
             <Card2 />
           </Col>
           <Col className="mt-5" xs={12} md={4}>
@@ -141,7 +136,7 @@ const Home = () => {
           <Col className="mt-5" xs={12} md={4}>
             <Card6 />
           </Col> */}
-        </Row>
+        {/* </Row> */}
       </Container>
     </>
   );
