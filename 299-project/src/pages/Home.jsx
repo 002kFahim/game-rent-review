@@ -122,11 +122,11 @@ const Home = () => {
       </div>
 
       <Container className="d-flex justify-content-center mt-5">
-        <Row style={{paddingBottom: '8px'}}>
+        <Row style={{paddingBottom: '8px',display:"flex",alignItems:"center"}}>
           <Col className="mt-5" xs={12} md={4}>
-            <Card1 />
+            <Card2 />
           </Col>
-          <Col className="mt-5" xs={12} md={4}>
+          {/* <Col className="mt-5" xs={12} md={4}>
             <Card2 />
           </Col>
           <Col className="mt-5" xs={12} md={4}>
@@ -140,7 +140,7 @@ const Home = () => {
           </Col>
           <Col className="mt-5" xs={12} md={4}>
             <Card6 />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </>
