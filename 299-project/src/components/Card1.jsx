@@ -53,7 +53,6 @@ const Card1 = () => {
       <div
         style={{
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
           flexWrap: "wrap",
         }}
