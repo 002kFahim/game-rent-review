@@ -7,7 +7,7 @@ const Card4 = () => {
     <>
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={fifa23} />
-        <Card.Body>
+        <Card.Body style={{height: '300px'}}>
           <Card.Title>Fifa 23</Card.Title>
           <Card.Text>
             FIFA 23 brings The World’s Game to the pitch, with HyperMotion2

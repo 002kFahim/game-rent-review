@@ -8,7 +8,7 @@ const Card5 = () => {
     <>
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={hogwart} />
-        <Card.Body>
+        <Card.Body style={{height: '300px'}}>
           <Card.Title>Hogwarts Legacy</Card.Title>
           <Card.Text>
             Hogwarts Legacy is an immersive, open-world action RPG. Now you can

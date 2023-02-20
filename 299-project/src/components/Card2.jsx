@@ -8,7 +8,7 @@ const Card2 = () => {
     <>
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={gtav} />
-        <Card.Body>
+        <Card.Body style={{height: '280px'}}>
           <Card.Title>Grand Theft Auto 5</Card.Title>
           <Card.Text>
             Grand Theft Auto V offers players the option to explore the

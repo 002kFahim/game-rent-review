@@ -122,7 +122,7 @@ const Home = () => {
       </div>
 
       <Container className="d-flex justify-content-center mt-5">
-        <Row>
+        <Row style={{paddingBottom: '8px'}}>
           <Col className="mt-5" xs={12} md={4}>
             <Card1 />
           </Col>

@@ -8,7 +8,7 @@ const Card3 = () => {
     <>
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={mw2} />
-        <Card.Body>
+        <Card.Body style={{height: '280px'}}>
           <Card.Title>Call of Duty Modern Warfare 2</Card.Title>
           <Card.Text>
             Call of Duty®: Modern Warfare® II drops players into an

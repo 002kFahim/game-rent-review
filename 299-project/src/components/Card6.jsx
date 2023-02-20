@@ -6,9 +6,9 @@ import mine from "../pictures/mine.jpg";
 const Card6 = () => {
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem"}}>
         <Card.Img variant="top" src={mine} />
-        <Card.Body>
+        <Card.Body style={{height: '300px'}}>
           <Card.Title>Minecraft</Card.Title>
           <Card.Text>
             Explore infinite worlds and build everything from the simplest of
