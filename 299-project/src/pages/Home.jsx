@@ -1,7 +1,8 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar1 from "../components/Navbar1";
-import { Container, Row, Col } from "react-bootstrap";
+import About1 from "../components/About1";
+import { Container, Col } from "react-bootstrap";
 import Card1 from "../components/Card1";
 import pic1 from "../pictures/hogleg.jpg";
 import pic2 from "../pictures/elden Ring.jpg";
@@ -138,6 +139,7 @@ const Home = () => {
           </Col> */}
         {/* </Row> */}
       </Container>
+      <About1 />
     </>
   );
 };

@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../pictures/gamepad.jpg";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Navbar1 = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -12,7 +14,7 @@ const Navbar1 = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="./home">
             {" "}
             <img
@@ -31,20 +33,25 @@ const Navbar1 = () => {
             <Nav.Link href="./discussion">Discussion</Nav.Link>
             {isAuthenticated && (
               <Nav.Item>
-                <img
-                  src={user.picture}
-                  //alt={user.name}
-                  roundedCircle
-                  width={30}
-                  height={30}
-                  className="mr-2"
-                />
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={<Tooltip id="tooltip-bottom">{user.name}</Tooltip>}
+                >
+                  <img
+                    src={user.picture}
+                    //alt={user.name}
+                    roundedCircle
+                    width={30}
+                    height={30}
+                    className="mt-1"
+                  />
+                </OverlayTrigger>
                 {/* <span style={{ color: "white" }}>{user.name}</span> */}
               </Nav.Item>
             )}
             {isAuthenticated ? (
               <Button
-                variant="outline-success"
+                variant="outline-warning"
                 onClick={() =>
                   logout({ logoutParams: { returnTo: window.location.origin } })
                 }
@@ -53,7 +60,7 @@ const Navbar1 = () => {
               </Button>
             ) : (
               <Button
-                variant="outline-success"
+                variant="outline-warning"
                 onClick={() => loginWithRedirect()}
               >
                 Login
