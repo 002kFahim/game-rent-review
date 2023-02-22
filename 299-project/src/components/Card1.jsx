@@ -65,7 +65,7 @@ const Card1 = () => {
                 <Card.Body style={{ height: "250px" }}>
                   <Card.Title>{value.caption}</Card.Title>
                   <Card.Text>{value.des}</Card.Text>
-                  <Button variant="primary">See more</Button>
+                  <Button variant="outline-success">See more</Button>
                 </Card.Body>
               </Card>
             </div>
