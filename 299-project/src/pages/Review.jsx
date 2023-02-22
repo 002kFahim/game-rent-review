@@ -31,11 +31,10 @@ const Review = () => {
       <div>
         <Container>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={mw2_2nd}/>
             <Card.Body>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                This page is under development.
               </Card.Text>
             </Card.Body>
           </Card>
