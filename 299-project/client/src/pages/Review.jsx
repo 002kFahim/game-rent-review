@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -6,8 +6,18 @@ import Navbar from "react-bootstrap/Navbar";
 import Navbar1 from "../components/Navbar1";
 import { Row, Col, Card } from "react-bootstrap";
 import mw2_2nd from "../pictures/mw2_2nd.jpg";
+import axios from "axios";
 
 const Review = () => {
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://locahost:3001/api/reviewI").then((response) => {
+      setReview(response.data);
+      // console.log(response);
+    });
+  }, []);
+
   return (
     <>
       <Navbar1 />
@@ -28,18 +38,10 @@ const Review = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div>
-        <Container>
-          <Card>
-            <Card.Img variant="top" src={mw2_2nd}/>
-            <Card.Body>
-              <Card.Text>
-                This page is under development.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Container>
-      </div>
+
+      {review.map((val) => {
+        return <div>{val.Name}</div>;
+      })}
     </>
   );
 };

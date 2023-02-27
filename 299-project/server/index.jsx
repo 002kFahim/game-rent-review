@@ -15,3 +15,10 @@ const db = mysql.createConnection({
   password: "",
   database: "gamefixdb",
 });
+
+app.get("/api/reviewI", (req, res) => {
+  const sqlSelect = "Select * From review";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
