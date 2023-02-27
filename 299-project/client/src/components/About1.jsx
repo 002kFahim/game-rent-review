@@ -15,7 +15,7 @@ const About1 = () => {
   return (
     <>
       <div style={sectionStyle}>
-        <Container>
+        <Container style={{marginLeft: "17%"}}>
           <Row>
             <Col>
               <Container>
