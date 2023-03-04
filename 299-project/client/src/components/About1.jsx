@@ -15,7 +15,7 @@ const About1 = () => {
   return (
     <>
       <div style={sectionStyle}>
-        <Container style={{ marginLeft: "23%" }}>
+        <Container className="text-center">
           <Row>
             <Col>
               <Container>
