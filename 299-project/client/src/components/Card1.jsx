@@ -60,7 +60,12 @@ const Card1 = () => {
         {item.map((value) => {
           return (
             <div style={{ padding: "30px" }}>
-              <Card border="warning" style={{ width: "18rem" }}>
+              <Card
+                style={{
+                  width: "18rem",
+                  boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
+                }}
+              >
                 <Card.Img variant="top" src={value.img} />
                 <Card.Body style={{ height: "250px" }}>
                   <Card.Title>{value.caption}</Card.Title>
