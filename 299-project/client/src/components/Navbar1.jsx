@@ -41,8 +41,8 @@ const Navbar1 = () => {
                     src={user.picture}
                     roundedCircle
                     //alt={user.name}
-                    width={30}
-                    height={30}
+                    width="30"
+                    height="30"
                     className="mt-2 me-2"
                   />
                 </OverlayTrigger>
