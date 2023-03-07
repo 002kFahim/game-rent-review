@@ -7,13 +7,14 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../pictures/gamepad.jpg";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { Image } from "react-bootstrap";
 
 const Navbar1 = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="./home">
             {" "}
@@ -22,7 +23,6 @@ const Navbar1 = () => {
               width="40"
               height="40"
               className="d-inline-block align-top"
-              alt="React logo"
             />
             GameFiX
           </Navbar.Brand>
@@ -37,13 +37,13 @@ const Navbar1 = () => {
                   placement="bottom"
                   overlay={<Tooltip id="tooltip-bottom">{user.name}</Tooltip>}
                 >
-                  <img
+                  <Image
                     src={user.picture}
-                    //alt={user.name}
                     roundedCircle
+                    //alt={user.name}
                     width={30}
                     height={30}
-                    className="mt-1"
+                    className="mt-2 me-2"
                   />
                 </OverlayTrigger>
                 {/* <span style={{ color: "white" }}>{user.name}</span> */}
@@ -53,7 +53,9 @@ const Navbar1 = () => {
               <Button
                 variant="outline-warning"
                 onClick={() =>
-                  logout({ logoutParams: { returnTo: window.location.origin } })
+                  logout({
+                    logoutParams: { returnTo: window.location.origin },
+                  })
                 }
               >
                 Logout
