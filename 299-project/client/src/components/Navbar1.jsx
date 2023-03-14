@@ -17,7 +17,6 @@ const Navbar1 = () => {
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand href="./home">
-            {" "}
             <img
               src={logo}
               width="40"

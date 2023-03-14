@@ -1,20 +1,56 @@
 import { React, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Navbar1 from "../components/Navbar1";
-import { Row, Col, Card } from "react-bootstrap";
-import mw2_2nd from "../pictures/mw2_2nd.jpg";
-import axios from "axios";
+import Pagination from "react-bootstrap/Pagination";
+import Axios from "axios";
 
 const Review = () => {
   const [review, setReview] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    const totalPages = Math.ceil(review.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handleFirst = () => {
+    setCurrentPage(1);
+  };
+
+  const handleLast = () => {
+    const totalPages = Math.ceil(review.length / itemsPerPage);
+    setCurrentPage(totalPages);
+  };
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = review.slice(indexOfFirstItem, indexOfLastItem);
+
+  const pageNumbers = [];
+  const totalPages = Math.ceil(review.length / itemsPerPage);
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
 
   useEffect(() => {
-    axios.get("http://locahost:3001/api/reviewI").then((response) => {
+    Axios.get("http://localhost:5000/reviews").then((response) => {
       setReview(response.data);
-      // console.log(response);
     });
   }, []);
 
@@ -39,9 +75,121 @@ const Review = () => {
         </Container>
       </Navbar>
 
-      {review.map((val) => {
-        return <div>{val.Name}</div>;
-      })}
+      {/* {review.map((val, key) => {
+        return (
+          <>
+            <div>
+              <h4>{val.Name}</h4>
+              <p>{val.Genre}</p>
+              <p>{val.Score1}</p>
+              <p>{val.Score2}</p>
+              <p>{val.Score3}</p>
+              <p>{val.Score4}</p>
+              <p>{val.Critic1}</p>
+              <p>{val.Critic2}</p>
+            </div>
+          </>
+        );
+      })} */}
+      <Pagination
+        className="justify-content-end"
+        style={{ paddingRight: "23px" }}
+      >
+        <Pagination.First onClick={handleFirst} disabled={currentPage === 1} />
+        <Pagination.Prev onClick={handlePrev} disabled={currentPage === 1} />
+        {pageNumbers.map((pageNumber) => {
+          if (
+            pageNumber === 1 ||
+            pageNumber === totalPages ||
+            (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
+          ) {
+            return (
+              <Pagination.Item
+                key={pageNumber}
+                active={pageNumber === currentPage}
+                onClick={() => handlePageClick(pageNumber)}
+              >
+                {pageNumber}
+              </Pagination.Item>
+            );
+          } else if (
+            pageNumber === currentPage - 2 ||
+            pageNumber === currentPage + 2
+          ) {
+            return <Pagination.Ellipsis key={pageNumber} />;
+          } else {
+            return null;
+          }
+        })}
+        <Pagination.Next
+          onClick={handleNext}
+          disabled={currentPage === Math.ceil(review.length / itemsPerPage)}
+        />
+        <Pagination.Last
+          onClick={handleLast}
+          disabled={currentPage === Math.ceil(review.length / itemsPerPage)}
+        />
+      </Pagination>
+      <div>
+        {currentItems.map((item, index) => (
+          <div style={{ padding: "15px" }} key={index}>
+            <Card style={{ boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)" }}>
+              <Card.Body>
+                <h4 style={{ textDecoration: "underline" }}>{item.Name}</h4>
+                <h5>Genre :</h5>
+                <p>{item.Genre}</p>
+                <h5>Critic Scores :</h5>
+                <p>{item.Score1}</p>
+                <p>{item.Score2}</p>
+                <p>{item.Score3}</p>
+                <p>{item.Score4}</p>
+                <h5>Critics :</h5>
+                <p>{item.Critic1}</p>
+                <p>{item.Critic2}</p>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
+      </div>
+      <Pagination
+        className="justify-content-end"
+        style={{ paddingRight: "23px" }}
+      >
+        <Pagination.First onClick={handleFirst} disabled={currentPage === 1} />
+        <Pagination.Prev onClick={handlePrev} disabled={currentPage === 1} />
+        {pageNumbers.map((pageNumber) => {
+          if (
+            pageNumber === 1 ||
+            pageNumber === totalPages ||
+            (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
+          ) {
+            return (
+              <Pagination.Item
+                key={pageNumber}
+                active={pageNumber === currentPage}
+                onClick={() => handlePageClick(pageNumber)}
+              >
+                {pageNumber}
+              </Pagination.Item>
+            );
+          } else if (
+            pageNumber === currentPage - 2 ||
+            pageNumber === currentPage + 2
+          ) {
+            return <Pagination.Ellipsis key={pageNumber} />;
+          } else {
+            return null;
+          }
+        })}
+        <Pagination.Next
+          onClick={handleNext}
+          disabled={currentPage === Math.ceil(review.length / itemsPerPage)}
+        />
+        <Pagination.Last
+          onClick={handleLast}
+          disabled={currentPage === Math.ceil(review.length / itemsPerPage)}
+        />
+      </Pagination>
     </>
   );
 };

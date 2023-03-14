@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar1 from "../components/Navbar1";
 import About1 from "../components/About1";
-import { Container, Col } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Card1 from "../components/Card1";
 import pic1 from "../pictures/hogleg.jpg";
 import pic2 from "../pictures/elden Ring.jpg";
@@ -117,9 +117,17 @@ const Home = () => {
         </Carousel>
       </div>
 
-      <Container className="d-flex justify-content-center mt-5">
+      <Container>
+        <Row>
+          <Col className="text-center my-5">
+            <h3>Featured & Frequently Searched</h3>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container className="d-flex justify-content-center">
         {/* <Row style={{paddingBottom: '8px',display:"flex",alignItems:"center"}}> */}
-        <Col className="mt-5" xs={12}>
+        <Col xs={12}>
           <Card1 />
         </Col>
         {/* <Col className="mt-5" xs={12} md={4}>
