@@ -7,7 +7,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Navbar1 from "../components/Navbar1";
 import Pagination from "react-bootstrap/Pagination";
 import Axios from "axios";
-import pic from "../pictures/callistoprotocol.jpg";
 
 const Review = () => {
   const [review, setReview] = useState([]);
