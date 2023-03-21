@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Navbar1 from "../components/Navbar1";
 import Pagination from "react-bootstrap/Pagination";
 import Axios from "axios";
+import pic from "../pictures/callistoprotocol.jpg";
 
 const Review = () => {
   const [review, setReview] = useState([]);
@@ -93,7 +94,7 @@ const Review = () => {
       })} */}
       <Pagination
         className="justify-content-end"
-        style={{ paddingRight: "23px" }}
+        style={{ paddingRight: "23px", paddingTop: "23px" }}
       >
         <Pagination.First onClick={handleFirst} disabled={currentPage === 1} />
         <Pagination.Prev onClick={handlePrev} disabled={currentPage === 1} />
@@ -136,16 +137,31 @@ const Review = () => {
             <Card style={{ boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)" }}>
               <Card.Body>
                 <h4 style={{ textDecoration: "underline" }}>{item.Name}</h4>
-                <h5>Genre :</h5>
-                <p>{item.Genre}</p>
-                <h5>Critic Scores :</h5>
-                <p>{item.Score1}</p>
-                <p>{item.Score2}</p>
-                <p>{item.Score3}</p>
-                <p>{item.Score4}</p>
-                <h5>Critics :</h5>
-                <p>{item.Critic1}</p>
-                <p>{item.Critic2}</p>
+                <img
+                  src={item.Images}
+                  style={{ height: "500px", width: "50%" }}
+                />
+                <div>
+                  <b>{item.Genre}</b>
+                </div>
+                <b>Critic Scores : </b>
+                <p style={{ display: "inline", marginRight: "10px" }}>
+                  {item.Score1}
+                </p>
+                <p style={{ display: "inline", marginRight: "10px" }}>
+                  {item.Score2}
+                </p>
+                <p style={{ display: "inline", marginRight: "10px" }}>
+                  {item.Score3}
+                </p>
+                <p style={{ display: "inline", marginRight: "10px" }}>
+                  {item.Score4}
+                </p>
+                <div>
+                  <b>Critics :</b>
+                  <p>{item.Critic1}</p>
+                  <p>{item.Critic2}</p>
+                </div>
               </Card.Body>
             </Card>
           </div>
