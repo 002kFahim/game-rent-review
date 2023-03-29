@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
+import { Form, InputGroup } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Navbar1 from "../components/Navbar1";
 import Pagination from "react-bootstrap/Pagination";
@@ -11,7 +11,20 @@ import Axios from "axios";
 const Review = () => {
   const [review, setReview] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [searchTerm, setSearchTerm] = useState("");
+  const itemsPerPage = 6;
+
+  const getFilteredReviews = () => {
+    return review.filter(
+      (item) =>
+        item.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Score1.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Score2.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Score3.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Score4.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
 
   const handlePrev = () => {
     if (currentPage > 1) {
@@ -20,7 +33,7 @@ const Review = () => {
   };
 
   const handleNext = () => {
-    const totalPages = Math.ceil(review.length / itemsPerPage);
+    const totalPages = Math.ceil(getFilteredReviews().length / itemsPerPage);
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
@@ -30,7 +43,7 @@ const Review = () => {
   };
 
   const handleLast = () => {
-    const totalPages = Math.ceil(review.length / itemsPerPage);
+    const totalPages = Math.ceil(getFilteredReviews().length / itemsPerPage);
     setCurrentPage(totalPages);
   };
 
@@ -40,10 +53,13 @@ const Review = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = review.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = getFilteredReviews().slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const pageNumbers = [];
-  const totalPages = Math.ceil(review.length / itemsPerPage);
+  const totalPages = Math.ceil(getFilteredReviews().length / itemsPerPage);
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
@@ -54,6 +70,15 @@ const Review = () => {
     });
   }, []);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleClearClick = () => {
+    setSearchTerm("");
+  };
+
   return (
     <>
       <Navbar1 />
@@ -62,35 +87,23 @@ const Review = () => {
           <Navbar.Brand>Know Your Games</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
+            <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
+              <InputGroup>
+                <Form.Control
+                  type="search"
+                  placeholder="Search your game here"
+                  className="me-2"
+                  aria-label="Search"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  style={{ boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)" }}
+                />
+              </InputGroup>
             </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* {review.map((val, key) => {
-        return (
-          <>
-            <div>
-              <h4>{val.Name}</h4>
-              <p>{val.Genre}</p>
-              <p>{val.Score1}</p>
-              <p>{val.Score2}</p>
-              <p>{val.Score3}</p>
-              <p>{val.Score4}</p>
-              <p>{val.Critic1}</p>
-              <p>{val.Critic2}</p>
-            </div>
-          </>
-        );
-      })} */}
       <Pagination
         className="justify-content-end"
         style={{ paddingRight: "23px", paddingTop: "23px" }}

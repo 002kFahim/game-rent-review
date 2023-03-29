@@ -7,7 +7,7 @@ import Modal1 from "../components/Modal1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { faComment, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const Discussion = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -37,7 +37,7 @@ const Discussion = () => {
             style={{
               fontSize: "22px",
               height: "400px",
-              border: "5px solid orange",
+              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
             }}
           >
             In this segment, all the recent discussions will be shown.
@@ -52,6 +52,7 @@ const Discussion = () => {
               marginRight: "10px",
               fontSize: "20px",
               backgroundColor: "green",
+              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
             }}
           >
             UpVote
@@ -67,6 +68,7 @@ const Discussion = () => {
               marginRight: "10px",
               fontSize: "20px",
               backgroundColor: "red",
+              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
             }}
           >
             DownVote
@@ -78,7 +80,11 @@ const Discussion = () => {
           <Button
             variant="primary"
             type="submit"
-            style={{ fontSize: "20px", backgroundColor: "Orange" }}
+            style={{
+              fontSize: "20px",
+              backgroundColor: "Orange",
+              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
+            }}
           >
             Comment
             <FontAwesomeIcon icon={faComment} style={{ paddingLeft: "10px" }} />
@@ -100,7 +106,7 @@ const Discussion = () => {
           onClick={() => setModalShow(true)}
         >
           {" "}
-          <FontAwesomeIcon icon={faPlus} />
+          <FontAwesomeIcon icon={faPenToSquare} />
         </Button>
       </div>
       <Modal1 show={modalShow} onHide={() => setModalShow(false)} />

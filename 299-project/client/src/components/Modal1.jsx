@@ -24,9 +24,9 @@ const Modal1 = (props) => {
               as="textarea"
               placeholder="Tell us what is in your mind!"
               style={{
-                border: "5px solid orange",
                 fontSize: "22px",
                 height: "200px",
+                boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
               }}
             />
             <Form.Text></Form.Text>
@@ -36,7 +36,11 @@ const Modal1 = (props) => {
             <Button
               variant="primary"
               type="submit"
-              style={{ backgroundColor: "Orange", fontSize: "20px" }}
+              style={{
+                backgroundColor: "Orange",
+                fontSize: "20px",
+                boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
+              }}
             >
               post
             </Button>
