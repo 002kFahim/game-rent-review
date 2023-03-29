@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar1 from "../components/Navbar1";
 import About1 from "../components/About1";
@@ -17,7 +18,7 @@ const Home = () => {
         <Navbar1 />
       </div>
       <div>
-        <Carousel>
+        <Carousel fade className="carousel-fade">
           <Carousel.Item interval={2000}>
             <img
               className="d-block w-100"
