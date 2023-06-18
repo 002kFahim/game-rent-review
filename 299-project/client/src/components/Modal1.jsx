@@ -33,17 +33,7 @@ const Modal1 = (props) => {
           </Form.Group>
 
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button
-              variant="primary"
-              type="submit"
-              style={{
-                backgroundColor: "Orange",
-                fontSize: "20px",
-                boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.25)",
-              }}
-            >
-              post
-            </Button>
+            <Button variant="outline-success">post</Button>
           </div>
         </Modal.Body>
       </Modal>

@@ -27,7 +27,7 @@ const Navbar1 = () => {
           </Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="./home">Home</Nav.Link>
-            <Nav.Link href="./rental">Rental</Nav.Link>
+            <Nav.Link href="./rental">Buy/Rental</Nav.Link>
             <Nav.Link href="./review">Review</Nav.Link>
             <Nav.Link href="./discussion">Discussion</Nav.Link>
             {isAuthenticated && (

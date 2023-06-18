@@ -18,11 +18,7 @@ const Review = () => {
     return review.filter(
       (item) =>
         item.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.Genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.Score1.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.Score2.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.Score3.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.Score4.toLowerCase().includes(searchTerm.toLowerCase())
+        item.Genre.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
 
